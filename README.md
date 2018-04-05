@@ -8,19 +8,17 @@ a convinient way to access Firebase SDK in a form of a simple `FirebaseApp` serv
 Here are some of the reasons why you might consider using this library:
 - Bundle size. As mentioned above, this library doesn't add much on top of [Firebase SDK](https://www.npmjs.com/package/firebase), so the footprint is tiny. 
 - Program closer to the [official API](https://firebase.google.com/docs/web/setup) of [Firebase SDK](https://www.npmjs.com/package/firebase). This is convinient because all the examples in the official docs for Firebase (at https://firebase.google.com/docs) as well as StackOverflow answers will be directly applicable (as opposed to having to find the analogous API's in the docs of the wrapper libraries).
-- Less code = less complexity = less bugs. Consider the [issue list](https://github.com/angular/angularfire2/issues) for [angularfire2](https://github.com/angular/angularfire2). Also consider that [angularfire2](https://github.com/angular/angularfire2) hasn't had a stable release yet and is in RC stage for almost a year now (**!**). 
+- Less code = less complexity = less bugs. Consider the [issue list](https://github.com/angular/angularfire2/issues) for [angularfire2](https://github.com/angular/angularfire2). Also consider that [angularfire2](https://github.com/angular/angularfire2) hasn't had a stable release yet and is in RC stage for almost a year now (**!**).
 
 ## Installation & Setup
 The installation and setup instructions are very similar to [angularfire2](https://github.com/angular/angularfire2/blob/master/docs/install-and-setup.md):
 
 ### 1. Install `ng-firebase-lite` and `firebase`
-
 ```bash
 npm install ng-firebase-lite firebase --save
 ```
 
 ### 2. Add Firebase config to environments variable
-
 Open `/src/environments/environment.ts` and add your Firebase configuration. You can find your project configuration in [the Firebase Console](https://console.firebase.google.com). From the project overview page, click **Add Firebase to your web app**.
 
 ```ts
@@ -40,7 +38,6 @@ export const environment = {
 ```
 
 ### 3. Setup `@NgModule` for the `FirebaseAppModule`
-
 Open `/src/app/app.module.ts`, inject the Firebase providers, and specify your Firebase configuration.
 
 ```ts
@@ -65,7 +62,6 @@ export class AppModule {}
 After you've imported `FirebaseAppModule` in your `AppModule` as described above, you can now inject `FirebaseApp` service anywhere you want to use the [Firebase API](https://firebase.google.com/docs/reference/js/). 
 
 ### Examples:
-
 **Auth**
 ```ts
 ...

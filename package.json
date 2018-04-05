@@ -1,10 +1,14 @@
 {
   "name": "ng-firebase-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/pglazkov/ng-firebase-lite.git",
   "author": "Pavlo Glazkov <p.glazkov@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "angular",
+    "firebase"
+  ],
   "scripts": {
     "build": "ng-packagr -p package.json",
     "ng-packagr": "ng-packagr"
