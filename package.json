@@ -1,0 +1,38 @@
+{
+  "name": "ng-firebase-lite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pglazkov/ng-firebase-lite.git",
+  "author": "Pavlo Glazkov <p.glazkov@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ng-packagr -p package.json",
+    "ng-packagr": "ng-packagr"
+  },
+  "devDependencies": {
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/compiler-cli": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@firebase/app-types": "^0.1.2",
+    "firebase": "^4.12.1",
+    "ng-packagr": "^2.4.1",
+    "tslib": "^1.9.0",
+    "typescript": "^2.8.1"
+  },
+  "peerDependencies": {
+    "@angular/core": "^5.2.9",
+    "firebase": "^4.6.1"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/public_api.ts",
+      "externals": {
+        "firebase": "firebase"
+      },
+      "umdModuleIds": {
+        "firebase/app": "firebase"
+      }
+    }
+  }
+}
