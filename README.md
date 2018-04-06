@@ -117,7 +117,7 @@ export class StorageService {
       resultStream.complete();
     });
 
-    return Observable.create((observer: Subscriber<EntriesResult>) => {
+    return Observable.create((observer: Subscriber<Item[]>) => {
       resultStream.subscribe(observer);
 
       return () => {
