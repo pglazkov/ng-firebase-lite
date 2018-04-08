@@ -8,6 +8,7 @@ a convinient way to access Firebase SDK in a form of a simple `FirebaseApp` serv
 Here are some of the reasons why you might consider using this library:
 - Bundle size. As mentioned above, this library doesn't add much on top of [Firebase SDK](https://www.npmjs.com/package/firebase), so the footprint is tiny. 
 - Program closer to the [official API](https://firebase.google.com/docs/web/setup) of [Firebase SDK](https://www.npmjs.com/package/firebase). This is convinient because all the examples in the official docs for Firebase (at https://firebase.google.com/docs) as well as StackOverflow answers will be directly applicable (as opposed to having to find the analogous API's in the docs of the wrapper libraries).
+- Consistency between client-side and server-side code. For example, to access Firebase from Cloud Functions you would need to use [Firebase Admin Node.js SDK](https://firebase.google.com/docs/admin/setup/), which has the same or similar API as [Firebase SDK](https://www.npmjs.com/package/firebase).
 - Less code = less complexity = less bugs. Consider the [issue list](https://github.com/angular/angularfire2/issues) for [angularfire2](https://github.com/angular/angularfire2). Also consider that [angularfire2](https://github.com/angular/angularfire2) hasn't had a stable release yet and is in RC stage for almost a year now (**!**).
 
 ## Installation & Setup
