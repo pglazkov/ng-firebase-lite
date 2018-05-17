@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import { InjectionToken, NgModule, NgZone } from '@angular/core';
 import { FirebaseAppConfig, FirebaseAppConfigToken } from './firebase-app-config';
 import { FirebaseApp } from './firebase-app';
