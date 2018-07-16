@@ -1,4 +1,7 @@
 # ng-firebase-lite
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/pglazkov/ng-firebase-lite.svg)](https://greenkeeper.io/)
+
 Very very lightweight library that helps with using [Firebase SDK](https://www.npmjs.com/package/firebase) in an Angular project.
 
 ## How is it different from [angularfire2](https://github.com/angular/angularfire2) or [angularfire-lite](https://github.com/hamedbaatour/angularfire-lite)?
