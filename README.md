@@ -68,15 +68,15 @@ After you've imported `FirebaseAppModule` in your `AppModule` as described above
 ...
 import { firebaseAppToken } from 'ng-firebase-lite';
 import { FirebaseApp } from "firebase/app"
-import { auth } from 'firebase/app';
+import { getAuth, Auth, signInWithRedirect } from 'firebase/auth';
 ...
 
 @Injectable()
 export class AuthService {
-  private readonly auth: auth.Auth;
+  private readonly auth: Auth;
 
   constructor(@Inject(firebaseAppToken) private fba: FirebaseApp) {
-    this.auth = fba.auth();
+    this.auth = getAuth(fba);
 
     this.auth.onAuthStateChanged(() => {
       console.log(`onAuthStateChanged. User: ${this.auth.currentUser}`);
@@ -84,7 +84,7 @@ export class AuthService {
   }
 
   login(provider: auth.AuthProvider): void {
-    this.auth.signInWithRedirect(provider).then(() => {
+    signInWithRedirect(this.auth, provider).then(() => {
       console.log('Login successful');
     }, err => console.error(err));
   }
@@ -95,23 +95,20 @@ export class AuthService {
 @Injectable()
 export class StorageService {
 
-  private readonly db: firestore.Firestore;
+  private readonly db: Firestore;
 
-  constructor(private fba: FirebaseApp) {
-    this.db = fba.firestore();
+  constructor(@Inject(firebaseAppToken) private fba: FirebaseApp) {
+    this.db = getFirestore(fba);
   }
 
   getItems(): Observable<Item[]> {
     const resultStream = new Subject<Item[]>();
 
-    let query = this.db
-      .collection('users')
-      .doc(this.userId)
-      .collection('my-collection');
+    let query = collection(doc(collection(this.db, 'users'), this.userId), 'my-collection'));
 
     let unsubscribeOnSnapshot: () => void = () => {};
 
-    unsubscribeOnSnapshot = query.onSnapshot(snapshot => {
+    unsubscribeOnSnapshot = onSnapshot(query, snapshot => {
       resultStream.next(snapshot.docs);
     }, error => {
       resultStream.error(error)

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "cp README.md LICENSE dist/ng-firebase-lite",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
