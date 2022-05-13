@@ -3,7 +3,7 @@ Very very lightweight library that helps with using [Firebase SDK](https://www.n
 
 ## How is it different from [angularfire2](https://github.com/angular/angularfire2) or [angularfire-lite](https://github.com/hamedbaatour/angularfire-lite)?
 Those libraries are much bigger and wrap all or most API's from [Firebase SDK](https://www.npmjs.com/package/firebase). This library, on the other hand, doesn't attempt to wrap all the API's, but just provides
-a convinient way to access Firebase SDK in a form of a simple `FirebaseApp` service that you can inject anywhere in your app. 
+a convinient way to access Firebase SDK by injecting `FirebaseApp` anywhere in your app. 
 
 Here are some of the reasons why you might consider using this library:
 - Bundle size. As mentioned above, this library doesn't add much on top of [Firebase SDK](https://www.npmjs.com/package/firebase), so the footprint is tiny. 
@@ -23,7 +23,7 @@ npm install ng-firebase-lite firebase --save
 Open `/src/environments/environment.ts` and add your Firebase configuration. You can find your project configuration in [the Firebase Console](https://console.firebase.google.com). From the project overview page, click **Add Firebase to your web app**.
 
 ```ts
-import { FirebaseAppConfig } from 'ng-firebase-lite';
+import { FirebaseOptions } from "firebase/app";
 
 export const environment = {
   production: false,
@@ -34,7 +34,7 @@ export const environment = {
     projectId: '<your-project-id>',
     storageBucket: '<your-storage-bucket>',
     messagingSenderId: '<your-messaging-sender-id>'
-  } as FirebaseAppConfig
+  } as FirebaseOptions
 };
 ```
 
@@ -60,13 +60,14 @@ export class AppModule {}
 ```
 
 ## Usage
-After you've imported `FirebaseAppModule` in your `AppModule` as described above, you can now inject `FirebaseApp` service anywhere you want to use the [Firebase API](https://firebase.google.com/docs/reference/js/). 
+After you've imported `FirebaseAppModule` in your `AppModule` as described above, you can now inject `FirebaseApp` anywhere you want to use the [Firebase API](https://firebase.google.com/docs/reference/js/). 
 
 ### Examples:
 **Auth**
 ```ts
 ...
-import { FirebaseApp } from 'ng-firebase-lite';
+import { firebaseAppToken } from 'ng-firebase-lite';
+import { FirebaseApp } from "firebase/app"
 import { auth } from 'firebase/app';
 ...
 
@@ -74,7 +75,7 @@ import { auth } from 'firebase/app';
 export class AuthService {
   private readonly auth: auth.Auth;
 
-  constructor(private fba: FirebaseApp) {
+  constructor(@Inject(firebaseAppToken) private fba: FirebaseApp) {
     this.auth = fba.auth();
 
     this.auth.onAuthStateChanged(() => {
